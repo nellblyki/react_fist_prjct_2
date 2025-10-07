@@ -8,7 +8,7 @@ import About from "./pages/About";
 import ToDo from "./ToDOList";
 import Convert from "./convirtation";
 import quizes from "./pages/quizes";
-import CreateQuiz from "./pages/CreateQuiz";
+import CreateQuizPage from "./pages/CreateQuizPage";
 export const router = createBrowserRouter([
   {
      
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "createquizes",
-        Component: CreateQuiz
+        Component: CreateQuizPage
       }
 
     ]
@@ -51,6 +51,5 @@ export const router = createBrowserRouter([
 
 ]);
 
-const root = document.getElementById("root");
 
 

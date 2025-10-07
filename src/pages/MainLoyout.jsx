@@ -1,11 +1,10 @@
 import { NavLink, Outlet } from "react-router";
-
 export default function MainLoyout() {
   return (
     <div>
-      <header>
-        <div className="logo"></div>
-        <nav>
+      <header className="flex justify-center gap-x-5 py-4 mb-10">
+        <div className="text-2xl font-bold items-center">LOGO</div>
+        <nav className="flex gap-x-4 ">
             <NavLink to="/">Главная</NavLink>
             <NavLink to ="/admin">Админка</NavLink>
             <NavLink to="/about">о нас</NavLink>
@@ -13,11 +12,10 @@ export default function MainLoyout() {
             <NavLink to="/convert">Конвертер</NavLink>
         </nav>
       </header>
-      <main>
+      <main className="conteiner mx-auto">
         <Outlet/>
       </main>
       <footer>
-        Подвальчик с детишками
       </footer>
     </div>
   )

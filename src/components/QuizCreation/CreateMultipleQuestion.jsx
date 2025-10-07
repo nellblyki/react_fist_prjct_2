@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CreateQuiz() {
+export default function CreateMultipleQuestion() {
   return (
     <div>
       
