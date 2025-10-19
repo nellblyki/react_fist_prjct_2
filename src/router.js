@@ -7,8 +7,11 @@ import MainLoyout from "./pages/MainLoyout";
 import About from "./pages/About";
 import ToDo from "./ToDOList";
 import Convert from "./convirtation";
-import quizes from "./pages/quizes";
 import CreateQuizPage from "./pages/CreateQuizPage";
+import playQuizPage from "./pages/playQuizPage";
+import QuizesPage from "./pages/QuizesPage";
+import { Component } from "react";
+import kt2 from "./kt2/kt2";
 export const router = createBrowserRouter([
   {
      
@@ -38,11 +41,18 @@ export const router = createBrowserRouter([
       },
       {
         path: "quizes",
-        Component: quizes
+        Component: QuizesPage
       },
       {
         path: "createquizes",
         Component: CreateQuizPage
+      },
+      {
+        path: "quizes/:id",
+        Component: playQuizPage
+      },
+      { path: "kt2",
+        Component: kt2
       }
 
     ]
