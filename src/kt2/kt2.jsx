@@ -56,10 +56,10 @@ export default function kt2() {
             <button onClick={addProduct} className='cursor-pointer border rounded-2xl w-40'>Добавить новый товар</button>
         </div>
 
-        <div className='flex justify-between flex-wrap '>
+        <div className='flex justify-between flex-wrap ml-10 mr-10 '>
             {
                 data.sort((a, b) => a.id - b.id).map(product => (
-                    <div className='items-center mb-5 mt-5 pt-3 pb-3 text-center border rounded-lg w-md'>
+                    <div className='items-center mb-5 mt-5 text-center border rounded-lg w-md'>
                         <div onDoubleClick={() => RemoveData(product.id)}>
                             <p>{product.name}</p>
                             <p>{product.price} ₽</p>
@@ -68,6 +68,9 @@ export default function kt2() {
                           <button className='cursor-pointer' onClick={() => decrement(product)}>-</button>
                           <p>{product.count}</p>
                           <button className='cursor-pointer' onClick={() => increment(product)}>+</button>
+                        </div>
+                        <div>
+                          <p>Итоговая стоимость {product.price * product.count}</p>
                         </div>
                     </div>
                 ))
