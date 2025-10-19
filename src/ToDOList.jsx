@@ -43,7 +43,7 @@ export default function ToDo() {
     setTodos(
       [
         ...todos,
-        { id: todos.length + 1, title: newTodo, completed: false }
+        { id: todos.length + 1  , title: newTodo, completed: false }
       ]
     )
   }

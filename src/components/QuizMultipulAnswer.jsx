@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react"
 
-export default function QuizMultipleAnswer() {
+export default function QuizMultipleAnswer({correctAnswers, question,variants}) {
 
-    const correctAnswers = [
-        'Кушал',
-        "Относил ключи"
-    ]
     const [userAnswers, setUserAnswers] = useState([])
     const [result, setResult] = useState('')
 
@@ -38,8 +34,13 @@ export default function QuizMultipleAnswer() {
 
     return (
         <div>
-            <h3>Почему я опаздал на пол часа на вторую пару?</h3>
-
+            <h3>{question}</h3>
+               { variants.map(variant => (
+                    <label>
+                        <input type="radio" name="QuizMultipul" onChange={() => setAnswer(variant)}/>
+                        {variant}
+                    </label>
+                ))}
             <div>
                 <label>
                     <input type="checkbox" onChange={() => checkAnswer('Кушал')} />

@@ -1,4 +1,4 @@
-export default function CreateSingleQuestion({ question, editQuestion }) { 
+export default function CreateSingleQuestion({ question, editQuestion, }) { 
      function editOptions(value,index){
         const options = question.options
         options[index] = value
@@ -17,7 +17,7 @@ export default function CreateSingleQuestion({ question, editQuestion }) {
                 question.options.map((option,index) => (
                     <div className="flex gap-x-3">
                         <input className="bg-blue-500" type="text" value={option} onInput={(e)=>{editOptions(e.target.value,index)}} placeholder={`Вариант ${index + 1}`} />
-                        <button onClick={()=> editQuestion(question.id,option,'correctAnswer')} className="text-sm border p1 border-b-fuchsia-500" >Отметить правильный ответ</button>
+                        <button onClick={()=> editQuestion(question.id,option,'correctAnswer')} className="text-sm border p1 border-fuchsia-500">Отметить правильный ответ</button>
                     </div>
                 ))
             }

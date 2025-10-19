@@ -8,6 +8,7 @@ export default function CreateQuizPage() {
         { id: Date.now(), type: 'direct', options: [''], question: '', correctAnswer: '', },
     ])
 
+
     function addQuestion() {
         setQuiz(
             [
@@ -31,9 +32,36 @@ export default function CreateQuizPage() {
             })
         )
     }
+    const [title, setTitle] = useState('')
+
+    function saveQuiz() {
+        const Quiz = {
+            id: Date.now(),
+            title: title,
+            question: quiz
+        }
+        if (localStorage.getItem('quizes')) {
+            const quizes = JSON.parse(localStorage.getItem('quizes'))
+            quizes.push(Quiz)
+            localStorage.setItem('quizes', JSON.stringify([quizes]))
+
+        } else {
+            localStorage.setItem('quizes', JSON.stringify([Quiz]))
+        }
+
+    }
 
     return (
         <div>
+            <div className="flex justify-center">
+                <input
+                    value={title}
+                    onInput={(e) => { setTitle(e.target.value) }}
+                    className="border-2 py-2 border-amber-500 px-2 w-120 mb-10"
+                    type="text"
+                    placeholder="Название квиза"
+                />
+            </div>
             {
                 quiz.map(question => (
                     <div>
@@ -52,15 +80,19 @@ export default function CreateQuizPage() {
                         }
                         {
                             question.type == 'multiple' &&
-                            <CreateMultipleQuestion question={question} />
+                            <CreateMultipleQuestion question={question} editQuestion={editQuestion} />
+
                         }
 
                     </div>
                 ))
             }
+            <div className="flex gap-2">
+                <button onClick={() => addQuestion()}>Добавить вопрос</button>
+                <button onClick={() => saveQuiz()}>Сохранить квиз</button>
+            </div>
 
 
-            <button onClick={() => addQuestion()}>Добавить вопрос</button>
 
 
         </div>
