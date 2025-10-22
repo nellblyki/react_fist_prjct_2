@@ -11,7 +11,7 @@ export default function ToDo() {
   const [FilteredToDos, setFilteredToDos] = useState([])
   const [newTodo, setNewTodo] = useState('')
   const [CurrentFilter, setCurrenrtFilter] = useState("All")
-
+  
   useEffect(() =>{
     if(CurrentFilter === "Done"){
       setFilteredToDos(

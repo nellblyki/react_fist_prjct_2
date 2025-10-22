@@ -14,69 +14,67 @@ export default function kt2() {
       })
     )
   }
-  function addProduct(){
+  function addProduct() {
     const name = prompt('Введите название товара:')
     if (!name) return
     const priceInput = prompt('Введите цену товара:')
     const price = parseInt(priceInput)
-    
     if (!isNaN(price) && price > 0) {
-        setData([...data, { 
-            id: Date.now(), 
-            name, 
-            price, 
-            count: 1 
-        }])
+      setData([...data, {
+        id: Date.now(),
+        name,
+        price,
+        count: 1
+      }])
     } else {
-        alert('Некорректная цена!')
+      alert('Некорректная цена!')
     }
-}
+  }
 
-  function increment(product){
-    if(product.count >= 25){
+  function increment(product) {
+    if (product.count >= 25) {
       alert("Максимальное количество товара 25 штук")
-    }else{
+    } else {
       setData([
-        ...data.filter((e) => e.id != product.id),{id: product.id, name: product.name, price: product.price, count: product.count + 1}// Я ЭТОГО ЗАДАНИЯ МАМУ ЛЮБЛЮ У МЕНЯ НЕ РАБОТАЛО ИЗЗА {}
+        ...data.filter((e) => e.id != product.id), { id: product.id, name: product.name, price: product.price, count: product.count + 1 }// Я ЭТОГО ЗАДАНИЯ МАМУ ЛЮБЛЮ У МЕНЯ НЕ РАБОТАЛО ИЗЗА {}
       ])
     }
   }
-  function decrement(product){
-    if(product.count <= 1){
+  function decrement(product) {
+    if (product.count <= 1) {
       RemoveData(product.id)
-    }else{
-        setData([
-          ...data.filter((e) => e.id != product.id),{id: product.id, name: product.name, price: product.price, count: product.count - 1}
-        ])
+    } else {
+      setData([
+        ...data.filter((e) => e.id != product.id), { id: product.id, name: product.name, price: product.price, count: product.count - 1 }
+      ])
     }
   }
   return (
     <div>
-        <div className='flex justify-center mb-10'>
-            <button onClick={addProduct} className='cursor-pointer border rounded-2xl w-40'>Добавить новый товар</button>
-        </div>
+      <div className='flex justify-center mb-10'>
+        <button onClick={addProduct} className='cursor-pointer border rounded-2xl w-40'>Добавить новый товар</button>
+      </div>
 
-        <div className='flex justify-between flex-wrap ml-10 mr-10 '>
-            {
-                data.sort((a, b) => a.id - b.id).map(product => (
-                    <div className='items-center mb-5 mt-5 text-center border rounded-lg w-md'>
-                        <div onDoubleClick={() => RemoveData(product.id)}>
-                            <p>{product.name}</p>
-                            <p>{product.price} ₽</p>
-                        </div>
-                        <div className='flex gap-4 justify-center'>
-                          <button className='cursor-pointer' onClick={() => decrement(product)}>-</button>
-                          <p>{product.count}</p>
-                          <button className='cursor-pointer' onClick={() => increment(product)}>+</button>
-                        </div>
-                        <div>
-                          <p>Итоговая стоимость {product.price * product.count}</p>
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
-
+      <div className='flex justify-between flex-wrap ml-10 mr-10 '>
+        {
+          data.sort((a, b) => a.id - b.id).map(product => (
+            <div className='items-center mb-5 mt-5 text-center border rounded-lg w-md'>
+              <div onDoubleClick={() => RemoveData(product.id)}>
+                <p>{product.name}</p>
+                <p>{product.price} ₽</p>
+              </div>
+              <div className='flex gap-4 justify-center'>
+                <button className='cursor-pointer' onClick={() => decrement(product)}>-</button>
+                <p>{product.count}</p>
+                <button className='cursor-pointer' onClick={() => increment(product)}>+</button>
+              </div>
+              <div>
+                <p>Итоговая стоимость {product.price * product.count}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
   )
 }

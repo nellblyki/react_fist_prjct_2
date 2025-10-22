@@ -12,6 +12,7 @@ export default function MainLoyout() {
           <NavLink to="/convert">Конвертер</NavLink>
           <NavLink to="/quizes">Сыграть в квиз</NavLink>
           <NavLink to="/kt2">Контрольная точка 2</NavLink>
+          <NavLink to="/Books">Книга</NavLink>
         </nav>
       </header>
       <main className="conteiner mx-auto">

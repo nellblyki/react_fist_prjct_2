@@ -12,6 +12,8 @@ import playQuizPage from "./pages/playQuizPage";
 import QuizesPage from "./pages/QuizesPage";
 import { Component } from "react";
 import kt2 from "./kt2/kt2";
+import fetch from "./components/Books";
+import Books from "./components/Books";
 export const router = createBrowserRouter([
   {
      
@@ -53,6 +55,10 @@ export const router = createBrowserRouter([
       },
       { path: "kt2",
         Component: kt2
+      },
+      {
+        path: "Books",
+        Component: Books
       }
 
     ]
