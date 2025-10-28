@@ -1,72 +1,58 @@
-import React, { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from "react"
+import CreateBook from "../components/CreateBook"
+import { NavLink } from "react-router"
+import { CartContext } from "./Store"
 
 export default function Books() {
 
-  const [books, SetBook] = useState([])
-
+  const [books, setBooks] = useState([])
+  const [Cart, SetCart] = useContext(CartContext)
+  console.log(Cart)
   useEffect(() => {
-    async function getBoobs() {
+
+
+    async function getBooks() {
       const resp = await fetch('https://fakerestapi.azurewebsites.net/api/v1/Books')
       const data = await resp.json()
-      SetBook(data)
-      console.log(data)
+      setBooks(data)
     }
-    getBoobs()
+
+    getBooks()
+
   }, [])
-  const [isShowm, SetisShown] = useState(false)
-  async function createBook(e) {
-    e.preventDefault()
-    const formData = new FormData(e.target)
-    const resp = await fetch('https://fakerestapi.azurewebsites.net/api/v1/Books', {
-      method: 'POST',
-      headers: {
-        "Content-Type": 'application/json'
-      },
-      body: JSON.stringify({
-        "title": formData.get('title'),
-        "description": formData.get('description'),
-        "pageCount": formData.get('pageCount'),
-        "excerpt": formData.get('excerpt'),
-        "publishDate": formData.get('date')
-      })
-    })
-    const data = await resp.json()
-    console.log(data)
+  function AddCart(item) {
+    SetCart(
+      [
+        ...Cart,
+        item
+      ]
+    )
   }
+
   return (
     <div>
-      <h1>Каталог книг</h1>
-      <div>
-        <div className='text-right'>
-          <button onClick={() => SetisShown(!isShowm)}
-            className='border border-amber-500 py-1 px-2'>{isShowm ? 'Отменить' : "Создать книгу"}</button>
-        </div>
+      <h1 className="text-3xl font-bold">Каталог книг</h1>
+
+
+      <CreateBook />
+
+
+      <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-5 mt-10">
         {
-          isShowm && (
+          books.map((book) => (
             <div>
-              <h2 className='text-center font-bold text-3xl'>Добавить книгу</h2>
-              <form onSubmit={(e) => createBook(e)} className='flex flex-col max-w-[600px] mx-auto gap-5 mt-5'>
-                <input name='title' className='border border-amber-500 py-1 px-2' type="text" placeholder='Заголовок' />
-                <textarea name='description' className='border border-amber-500 py-1 px-2' placeholder='Описание'></textarea>
-                <input name='pageCount' className='border border-amber-500 py-1 px-2' type="number" placeholder='Количество' />
-                <textarea name='excerpt' className='border border-amber-500 py-1 px-2' placeholder='Отрывок'></textarea>
-                <input name='date' className='border border-amber-500 py-1 px-2' type="datetime-local" />
-                <button>Создать книгу</button>
-              </form>
+              <NavLink to={`/books/${book.id}`} className="flex flex-col gap-4"><h3 className="text-center font-bold text-xl">{book.title}</h3></NavLink>
+              <p>{book.pageCount} страниц</p>
+              <p>{book.description}</p>
+              <p className="w-full truncate">{book.excerpt}</p>
+              <button onClick={() => AddCart(book)} className="border border-amber-600 cursor-pointer">Купить</button>
             </div>
-          )
+          ))
         }
       </div>
 
-      {
-        books.map((book) => (
-          <div>
-            <h3>{book.title}</h3>
-            <p>{book.pageCount} страниц</p>
-            <p>{book.description}</p>
-          </div>
-        ))
-      }
+
+
     </div>
   )
 }

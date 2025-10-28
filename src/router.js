@@ -14,6 +14,11 @@ import { Component } from "react";
 import kt2 from "./kt2/kt2";
 import fetch from "./components/Books";
 import Books from "./components/Books";
+import BooksID from "./components/BooksID";
+import Users from "./components/Users";
+import UserID from "./components/UserID";
+import Cart from "./components/Cart";
+import kt3 from "./kt3/kt3";
 export const router = createBrowserRouter([
   {
      
@@ -59,6 +64,26 @@ export const router = createBrowserRouter([
       {
         path: "Books",
         Component: Books
+      },
+      {
+        path: "Books/:id",
+        Component: BooksID
+      },
+      {
+        path: "Users",
+        Component: Users
+      },
+      {
+        path: "Users/:id",
+        Component: UserID
+      },
+      {
+        path: "Cart",
+        Component: Cart
+      },
+      {
+        path: "kt3",
+        Component: kt3
       }
 
     ]
