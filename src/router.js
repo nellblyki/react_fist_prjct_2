@@ -18,18 +18,20 @@ import BooksID from "./components/BooksID";
 import Users from "./components/Users";
 import UserID from "./components/UserID";
 import Cart from "./components/Cart";
-import kt3 from "./kt3/kt3";
+import kt3 from "./kt3,4/kt3";
+import LeetSpeak from "./components/LeetSpeak";
+import ProductsID from "./kt3,4/ProductsID";
 export const router = createBrowserRouter([
   {
-     
+
   },
   {
     Component: MainLoyout,
-    children:[
+    children: [
       {
         index: true,
         Component: indexpage
-     },
+      },
       {
         path: "admin",
         Component: AdminPage
@@ -58,7 +60,8 @@ export const router = createBrowserRouter([
         path: "quizes/:id",
         Component: playQuizPage
       },
-      { path: "kt2",
+      {
+        path: "kt2",
         Component: kt2
       },
       {
@@ -82,8 +85,16 @@ export const router = createBrowserRouter([
         Component: Cart
       },
       {
-        path: "kt3",
+        path: "products",
         Component: kt3
+      },
+      {
+        path: "LeetSpeak",
+        Component: LeetSpeak
+      },
+      {
+        path: "products/id",
+        Component: ProductsID
       }
 
     ]

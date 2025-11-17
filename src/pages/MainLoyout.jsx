@@ -19,7 +19,8 @@ export default function MainLoyout() {
             <NavLink to="/Books">Книга</NavLink>
             <NavLink to="/Users">Пользователи</NavLink>
             <NavLink to="/Cart">Корзина</NavLink>
-            <NavLink to="/kt3">Контрольная точка 3</NavLink>
+            <NavLink to="/products">Контрольная точка 3</NavLink>
+            <NavLink to="/LeetSpeak">Leet Speak</NavLink>
           </nav>
         </header>
         <main className="conteiner mx-auto">
