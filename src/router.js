@@ -6,7 +6,6 @@ import AdminPage from "./pages/AdminPage";
 import MainLoyout from "./pages/MainLoyout";
 import About from "./pages/About";
 import ToDo from "./ToDOList";
-import Convert from "./convirtation";
 import CreateQuizPage from "./pages/CreateQuizPage";
 import playQuizPage from "./pages/playQuizPage";
 import QuizesPage from "./pages/QuizesPage";
@@ -21,6 +20,10 @@ import Cart from "./components/Cart";
 import kt3 from "./kt3,4/kt3";
 import LeetSpeak from "./components/LeetSpeak";
 import ProductsID from "./kt3,4/ProductsID";
+import convirtation from "./components/convirtation";
+import ProductsPage from "./pages/ProductsPage";
+import CartPage from "./pages/CartPage";
+import kt5 from "./kt5/kt5";
 export const router = createBrowserRouter([
   {
 
@@ -46,7 +49,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "Convert",
-        Component: Convert
+        Component: convirtation
       },
       {
         path: "quizes",
@@ -95,6 +98,18 @@ export const router = createBrowserRouter([
       {
         path: "products/id",
         Component: ProductsID
+      },
+      {
+        path: 'ProductsPage',
+        Component: ProductsPage
+      },
+      {
+        path : 'ProductCart',
+        Component: CartPage
+      },
+      {
+        path: 'Cats',
+        Component: kt5
       }
 
     ]

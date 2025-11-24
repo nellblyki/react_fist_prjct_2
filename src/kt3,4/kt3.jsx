@@ -18,7 +18,7 @@ export default function kt3() {
             <header>
                 <button className='cursor-pointer mb-5 ml-5 border border-amber-600 p-4' onClick={() => window.scrollTo({ top: 100000, behavior: "smooth" })}>Пролистнуть вниз</button>
             </header>
-            <div div className='flex flex-wrap gap-10 justify-around items-stretch' >
+            <div div className=' flex-wrap gap-10 justify-around items-stretch' >
                 {
                     Products.map(product => (
                         <div className='border-2 border-amber-600 rounded-2xl w-[300px]  ml-3 flex flex-col'>

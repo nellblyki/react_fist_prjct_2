@@ -6,7 +6,7 @@ export default function ProductsID() {
     const { id } = useParams()
     useEffect(() => {
         async function GetProducts() {
-            const resp = await fetch(`https://fakestoreapi.com/products${id}`)
+            const resp = await fetch(`https://fakestoreapi.com/products/${id}`)
             const data = await resp.json()
             setProduct(data.product)
         }

@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from 'react'
 
-export default function Convert() {
-
+export default function convirtation() {
     const [summa, setSumma] = useState(0)
     const [currency, setCurrency] = useState('$')
     const [result, setResult] = useState(null)
-    
+
     useEffect(() => {
         if (currency === '$') {
             setResult((summa / 90).toFixed(2))
@@ -15,8 +14,9 @@ export default function Convert() {
     }, [summa, currency])
 
     return (
-        <div>
-            <input value={summa} onInput={(e) => setSumma(e.target.value)} type="number" placeholder="Введите сумму обмена" />
+        <div className='ml-3'>
+            <p>Введите сумму в рублях</p>
+            <input value={summa} onInput={(e) => setSumma(e.target.value)} type="text" placeholder="Введите сумму обмена" />
             <select onChange={(e) => setCurrency(e.target.value)}>
                 <option value="$">$</option>
                 <option value="euro">Euro</option>
